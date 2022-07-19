@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.project.member.mapper.MemberMapper">
+	
+	<resultMap type="com.spring.project.member.DTO.MemberDTO" id="dto">
+		<id property="id" column="id"/>
+ 		<result property="password" column="password"/>
+ 		<result property="name" column="name"/>
+ 		<result property="autoLogin" column="auto_login"/>
+ 		<result property="keepId" column="keep_id"/>
+ 		
+	</resultMap>
+	
+ 	
+ 	<!-- 아이디 중복 체크 -->
+ 	<select id="idCheck" resultType="Integer">
+ 		SELECT count(*) 
+ 		FROM member
+ 		WHERE id=#{id} 
+ 	</select>
+ 	
+ 	<!-- 회원가입 -->
+ 	<insert id="join">
+ 		INSERT INTO member(id,password,name)
+ 		VALUES(#{id},#{password},#{name})
+ 	</insert>
+ 	
+ 	<!-- 로그인 -->
+ 	<select id="login" resultMap="dto">
+ 		SELECT *
+ 		FROM member
+ 		WHERE id=#{id}
+ 	</select>
+ 	
+ 	<!-- 자동 로그인 쿠키 주입 -->
+ 	<insert id="autoLogin">
+ 		UPDATE member
+ 		SET auto_login =#{session}
+ 		WHERE id=#{id}
+ 	</insert>
+ 	<!-- 아이디 저장 쿠키 주입-->
+ 	<insert id="keepId">
+ 		UPDATE member
+ 		SET keep_id =#{session}
+ 		WHERE id=#{id}
+ 	</insert>
+ 	<!-- 자동로그인 쿠키 유무 -->
+ 	<select id="getSessionId" resultMap="dto">
+ 		SELECT * 
+ 		FROM member
+ 		WHERE auto_login=#{cookie}
+ 	</select>
+ 	<!-- 자동로그인 쿠키 유무 -->
+ 	<select id="getSessionId2" resultMap="dto">
+ 		SELECT * 
+ 		FROM member
+ 		WHERE keep_id=#{cookie}
+ 	</select>
+ 	<!--  비번 찾기 -->
+ 	<select id="find" resultMap="dto">
+ 		SELECT * 
+ 		FROM member
+ 		WHERE name=#{name} and id=#{id}
+ 	</select>
+ 	<!-- 비번 바꾸기 -->
+ 	<update id="pwChange">
+ 		UPDATE member
+ 		SET password=#{password}
+ 		WHERE id=#{id}
+ 	</update>
+	
+	
+	
+	
+	
+</mapper>

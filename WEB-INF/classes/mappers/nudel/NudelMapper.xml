@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.project.meal.mapper.NudelMapper">
+	
+	<resultMap type="com.spring.project.meal.DTO.NudelDTO" id="nudelResult">
+		<id property="nudelName" column="nudel_name"/>
+ 		<result property="nudelHot" column="nudel_hot"/>
+ 		<result property="nudelImg" column="nudel_img"/>
+	</resultMap>
+	
+	
+	<!-- 동적 sql:룰렛 경우의수 -->
+ 	<sql id="nudelCase">              
+                <if test="!nudelHot.equals('')">
+			    where nudel_hot like '%'||#{nudelHot}||'%'               
+                </if>                                       
+ 	</sql>
+	
+	<!-- 룰렛 결과 -->
+	<select id="nudelRoulette" resultMap="nudelResult">
+    SELECT * 
+	FROM(
+		SELECT RowNum r,nudel_name, nudel_hot,nudel_img 
+    	FROM(
+    		SELECT *
+    		FROM nudel
+   	 		<include refid="nudelCase"/>	 	
+   		)
+	)	 	
+	</select>
+	
+	
+	
+	
+	
+</mapper>

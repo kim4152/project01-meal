@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.project.meal.mapper.MealMapper">
+	
+	<resultMap type="com.spring.project.meal.DTO.MealDTO" id="mealResult">
+		<id property="mealName" column="meal_name"/>
+ 		<result property="mealPeople" column="meal_people"/>
+ 		<result property="mealHot" column="meal_hot"/>
+ 		<result property="mealWeight" column="meal_weight"/>
+ 		<result property="mealImg" column="meal_img"/>
+	</resultMap>
+	
+	
+	<!-- 동적 sql:룰렛 경우의수 -->
+ 	<sql id="mealCase">              
+                <if test="!mealPeople.equals('') and mealHot.equals('') and mealWeight.equals('') ">
+			    where meal_people like '%'||#{mealPeople}||'%'               
+                </if>
+               
+                <if test="!mealPeople.equals('') and !mealHot.equals('') and mealWeight.equals('') ">
+			    where meal_people like '%'||#{mealPeople}||'%' and meal_hot like '%'||#{mealHot}||'%'              
+                </if>
+               
+                <if test="mealPeople.equals('') and !mealHot.equals('') and mealWeight.equals('') ">
+			    where meal_hot like '%'||#{mealHot}||'%'              
+                </if>
+                
+                 <if test="mealPeople.equals('') and !mealHot.equals('') and !mealWeight.equals('') ">
+			    where meal_weight like '%'||#{mealWeight}||'%' and meal_hot like '%'||#{mealHot}||'%'              
+                </if>
+                
+                 <if test="mealPeople.equals('') and mealHot.equals('') and !mealWeight.equals('') ">
+			    where meal_weight like '%'||#{mealWeight}||'%'              
+                </if>
+                
+                 <if test="!mealPeople.equals('') and !mealHot.equals('') and !mealWeight.equals('') ">
+			    where meal_people like '%'||#{mealPeople}||'%' and meal_hot like '%'||#{mealHot}||'%' and meal_weight like '%'||#{mealWeight}||'%'              
+                </if>
+                
+                <if test="!mealPeople.equals('') and mealHot.equals('') and !mealWeight.equals('') ">
+			    where meal_people like '%'||#{mealPeople}||'%' and meal_weight like '%'||#{mealWeight}||'%'              
+                </if>                             
+ 	</sql>
+	
+	
+	
+	
+	<!-- 테스트 -->
+	<insert id="insert">
+		INSERT INTO meal
+		VALUES(#{mealName},#{mealPeople},#{mealWeight},#{mealHot},#{mealImg})
+	</insert>
+	
+	<!-- 룰렛 결과 -->
+	<select id="mealRoulette" resultMap="mealResult">
+	SELECT * 
+	FROM(
+		SELECT RowNum r,meal_name,meal_people, meal_hot, meal_weight, meal_img 
+    	FROM(
+    		SELECT *
+    		FROM meal
+   	 		<include refid="mealCase"/>	 	
+   		)
+	)	
+	</select>
+	
+	
+	
+	
+	
+</mapper>

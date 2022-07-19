@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://localhost:8010/meal/mealMain -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style type="text/css">	
+a{
+text-decoration: none; /* <a>밑줄 없애줌*/
+border-bottom: none;
+}
+/* ######  드롭박스 세부설정   ###### */
+.dropbtn {
+  background-color: white;
+  color: #4CAF50;
+  padding: none;
+  font-size: 40px;
+  border: none;
+  cursor: pointer;
+  align:center;
+  outline:0;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display:none;
+  position: absolute;
+  z-index: 99;
+}
+
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  color: red; 
+  
+}
+.groove {border-style: groove; color:blue; border:10} /*테두리 설정 */
+/*드롭박스 세부설정 끝 */
+
+/* ####### round slider 시작 #######*/
+.slider {
+    -webkit-appearance: none; /* 기본 CSS 스타일을 적용하지 않기 위해서 */
+    border-radius: 5px; /* 슬라이더 모서리를 약간 둥글게 */
+     height: 10px; /* 슬라이더 두께 */
+    background: #D5F5E3; /* 슬라이더 색상 */
+    outline: none; /* 슬라이더 테두리 없이 */
+}
+.slider:hover {
+  opacity: 1;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* 기본 CSS 스타일을 적용하지 않기 위해서 */
+    appearance: none; /* 기본 CSS 스타일을 적용하지 않기 위해서 */
+    width: 20px; /* 슬라이더 핸들 길이 */
+    height: 20px; /* 슬라이더 핸들 높이 */
+    border-radius: 50%; /* 핸들 모양을 원모양으로 만들기 위함 */
+    background: #EC7063; /* 슬라이더 핸들 색상 */
+    cursor: pointer; /* 슬라이더 핸들에 마우스를 갖다대면 포인터로 변경 */
+}
+.slider::-moz-range-thumb {
+    width: 20px; /* 슬라이더 핸들 길이 */
+    height: 20px; /* 슬라이더 핸들 높이 */
+    border-radius: 50%; /* 핸들 모양을 원모양으로 만들기 위함 */
+    background: #EC7063; /* 슬라이더 핸들 색상 */
+    cursor: pointer; /* 슬라이더 핸들에 마우스를 갖다대면 포인터로 변경 */
+}
+/* round slider 끝  */
+
+/*라디오버튼 */
+.radio1{
+  background-color: white;
+  color: black;
+  border:none;
+  width:100%;
+  display:none;
+  padding:none;
+ 
+}
+.radio5{
+	 font-size: 20px;
+}
+
+input[type=radio]:checked + label
+{
+	background: #ccc;
+	color:blue;
+}
+
+
+.radio2{
+  font-size: 20px;
+}
+/*라디오 버튼 설정 끝*/
+/*테이블 크기조정 */
+table{
+	table-layout:fixed;
+	text-align: center; 
+	border: none; 
+	margin: auto; 
+	width: 1000px;
+	width="100%";
+}
+.th{
+	table-layout:fixed;
+	height:400px;
+}
+/* reset button 설정*/
+.reset{ 
+ 	border-radius:15px;
+ 	transition-duration:0.3s;
+ 	font-size:30px;
+ 	background-color:#EDBB99;
+ 	outline:0;	
+}
+.reset:active{
+	margin-left:5px;
+	margin-top:5px;
+	box-shadow:none;
+}
+
+/*스크롤바 설정*/
+.scroll{
+	overflow: overlay; 
+	height: 700px;
+}
+.scroll::-webkit-scrollbar {
+    width:10px; 
+}
+.scroll::-webkit-scrollbar-track {
+    background-color: #71d6aa; /* 스크롤바 뒤 배경*/
+   
+}
+.scroll::-webkit-scrollbar-thumb {
+    color: white ;
+}
+
+/*modal*/
+.modal{
+	display: none;
+	z-index: 20;
+	width: 100%; height:100%;
+	background: rgba(0,0,0,0.8);
+	top:0; left:0;
+}
+.modal_content{
+	width: 400px; height: 400px;
+	background:white; border-radius: 200%;
+	top:50%; left:50%; 
+	margin:auto;
+	margin-top: 8%;
+}
+.mealTitleC{
+    top:50%; left:50%; cursor:poninter; box-sizing:boarder-box;
+	height:200px;
+	width:800px;
+	margin:auto;
+	margin-top:40px;
+	color:white; text-align: center;
+	align-content: center;
+	text-align: center;
+}
+
+
+.img{
+	width:400px;
+	height: 400px;
+	border-radius: 100%;
+}
+
+
+</style>
+
+
+
+<title>오늘 뭐 먹지</title>
+</head>
+<body>
+	
+	
+
+ 
+
+
+
+
+
+
+<!-- ######  드롭박스 설정 #########-->
+<link rel="stylesheet" href="./index_files/bootstrap.min.css">
+<script src="./index_files/jquery.slim.min.js.다운로드"></script>
+<script src="./index_files/popper.min.js.다운로드"></script>
+<script src="./index_files/bootstrap.bundle.min.js.다운로드"></script>
+<!-- 드롭박스  끝 -->
+
+<script src="./index_files/jquery-3.4.1.js.다운로드"></script>
+
+
+<script type="text/javascript">
+	function but(){
+		
+	}
+</script>
+<style type="text/css">
+ul li a {
+	text-decoration: none; /* <a>밑줄 없애줌*/
+	text-decoration-line: none;
+	color:#2C3E50;
+	font-weight: 600;
+}
+
+a{
+	text-decoration: none; /* <a>밑줄 없애줌*/
+	text-decoration-line: none;
+	color:#566573;
+}
+
+a:hover {
+	color:#566573 ;	/* 마우스 갖다대면 색 바꿈*/
+	text-decoration-line: none;
+}
+a:hover{
+text-decoration: none; /* <a>밑줄 없애줌*/
+border-bottom: none;
+}
+ul {
+	list-style: none; 	/* <li>테그의 . 을 빼줌*/
+	display: flex;		/* <li> 태그를 가로로 배치*/
+	justify-content: flex-end;	/* <li> 태그를 끝으로 배치*/
+	margin:7px;
+}
+ul li{
+	margin: 0 10px;	/* <li>끼리 간격*/
+	padding: 0;	/* <li> 높낮이 설정*/
+}
+.title{
+	text-align:center;
+	margin-top:40px;
+	margin-bottom:40px;
+	color:#277A17;font-weight: 900;
+	
+}
+h1 a{
+	style="color:red;
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+</style>
+
+
+
+
+
+
+	
+	<h1 class="title"><a href="https://ndproj1.netlify.app/" "="">오늘 뭐 먹지</a></h1>
+	<hr style="margin:0;">
+	
+	<table width="100%" style="text-align:center; border:none; margin: auto;width: 1000px; font-size:20px">	
+		<tbody><tr>
+			<td colspan="2" style="background-color:white ; width:100%; height:3px">
+				<ul>
+					<li>
+						<a href="http://localhost:8010/meal/mealMain">식사</a>
+					</li>
+					<li>
+						<a href="http://localhost:8010/nudel/nudelMain">라면</a>
+					</li>
+					<li>
+						<a href="http://localhost:8010/list/list">리스트만들기</a>
+					</li>
+					<li>
+						<a href="http://localhost:8010/board/main">게시판</a>
+					</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody></table>
+	
+	<hr style="margin:0;">
+	
+	
+	
+	
+	
+
+
+
+
+
+
+	
+	<table>
+
+		<tbody><tr class="th">	
+			
+			<td style="text-align: center;">
+				
+				
+				<form id="fo">
+				
+				<!-- 룰렛 돌리기 -->
+				<img alt="a" src="./index_files/roullete.png" id="start">
+				
+				
+					
+				<!-- 드롭다운 -->
+				
+				<div class="container">
+					<div id="accordion">
+							
+								<div class="card-header" style="background-color:white; font-size:28px">
+									<a class="collapsed card-link" data-toggle="collapse" href="http://localhost:8010/meal/mealMain#collapseTwo" onclick="set()"> 세부 검색 </a>
+								</div>
+								<div id="collapseTwo" class="collapse" data-parent="#accordion">
+									<div class="card-body">							
+										<!-- 1드롭박스 세부 설정 시작 -->									
+										<div class="dropdown">
+											  <input type="button" class="dropbtn" value="인원" size="3" id="mealPeople">
+											  <div class="dropdown-content">
+											  <div class="groove">										
+											  <input type="hidden" value="" name="mealPeople">
+											 
+											  <input type="radio" value="1" name="mealPeople" class="radio1" id="sole" oninput="peopleCheck()">
+											  <label for="sole" class="radio5">&nbsp;&nbsp;&nbsp;&nbsp;혼밥&nbsp;&nbsp;&nbsp;&nbsp;</label><br>
+											  
+											  <input type="radio" value="2" name="mealPeople" class="radio1" id="small" oninput="peopleCheck()">
+											  <label for="small" class="radio5">&nbsp;&nbsp;&nbsp;&nbsp;친구&nbsp;&nbsp;&nbsp;&nbsp;</label><br>
+											 
+											  <input type="radio" value="3" name="mealPeople" class="radio1" id="meet" oninput="peopleCheck()">
+											  <label for="meet" class="radio5">&nbsp;&nbsp;&nbsp;&nbsp;회식&nbsp;&nbsp;&nbsp;&nbsp;</label>
+											  </div></div>
+											</div>
+										<!-- 1드롭삭스 세부 설정 끝 -->
+										
+										<!-- 2드롭박스 세부 설정 시작 -->
+										<div class="dropdown">
+											  <input type="button" class="dropbtn" value="맵기" size="3" id="mealHot">
+											  <div class="dropdown-content">
+											  	<div class="groove">											  
+											  	<div class="slidecontainer">	 
+												  <input type="range" min="0" max="3" value="0" id="myRange" class="slider" name="mealHot" oninput="rag()">
+												  <label id="demo"></label>	<!-- 고추 사진 -->										    
+												</div></div>	
+																					  
+											  </div>
+											</div>
+										<!-- 2드롭삭스 세부 설정 끝 -->
+										<!-- 3드롭박스 세부 설정 시작 -->
+										<div class="dropdown">
+											  
+											  <input type="button" class="dropbtn" value="무게" size="7" id="mealWeight">
+											  <div class="dropdown-content">
+											  <div class="groove">										
+											  <input type="hidden" value="" name="mealWeight">
+											  <input type="radio" value="1" name="mealWeight" class="radio1" id="light" oninput="weightCheck()">
+											  <label for="light" class="radio2">가볍게</label>
+											  <input type="radio" value="2" name="mealWeight" class="radio1" id="heavy" oninput="weightCheck()">
+											  <label for="heavy" class="radio2">든든하게</label>
+											  </div></div>
+											</div>
+											
+										
+										<div class="dropdown">
+											<div>
+											&nbsp;&nbsp;&nbsp;
+											<input type="reset" onclick="radioReset()" value="초기화" class="reset">
+											</div>
+										</div>
+										<!-- 3드롭삭스 세부 설정 끝 -->
+									
+									</div>
+								</div>
+							</div></div>
+				<!-- 드롭다운 끝 --><br><br><br><br>
+				</form>
+			</td>
+			
+			<td style="background-color:#71d6aa; color: white; width: 20%;table-layout:fixed;">
+				<div class="scroll">
+				<h3>식사 List</h3>
+				<span id="list"></span>
+				</div>
+			</td>
+		</tr>
+
+
+
+		
+
+
+		<tr>
+			<td colspan="2" style="background-color: #FFCC00;color:white;">
+				<h2>뽑기 이미지를 눌러주세요</h2>
+			</td>
+		</tr>
+
+	</tbody></table>
+	
+	
+	<!-- 모달 창 -->
+	
+	<div class="modal">
+		<div class="modal_content">
+			<span id="resultName"></span>
+		</div>
+		
+		<div class="mealTitleC">
+			<h1><span id="mealTitle"></span></h1>
+			<br> 
+			<img alt="a" src="./index_files/map.png" id="kakao">	<br>
+			<div style="color:red; font-size: 19px">@근처 식당 찾아보기@</div>		
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	<script>
+
+	/*카카오 맵 열기*/	
+	function mapopen(data){
+		$("#kakao").click(function(){
+			var name = data.mealName;
+			console.log("map open")
+			console.log(name)
+			var options = 'top=100, left=650, width=800, height=815, status=no, menubar=no, toolbar=no, resizable=no';
+			var url='https://map.kakao.com?q='+name;
+			var name='popup';
+			window.open(url, name, options);
+			
+		});
+		
+		
+	}
+	
+	
+	
+		//맵기별 고추
+		function rag(){
+			
+			let v = $("#myRange").val()
+			console.log(v)
+			if(v==2){
+				$("#demo").html("<b> <img alt='a' src='/resources/img/rhcn1.png'> </b>")
+			}else if(v==3){
+				$("#demo").html("<b> <img alt='a' src='/resources/img/rhcn1.png'> <img alt='a' src='/resources/img/rhcn1.png'></b>")
+			}else if(v==1){
+				$("#demo").html("<b>순한맛</b>")
+			}else{
+				$("#demo").html("<b>상관없음</b>")
+				$("#mealHot").css("color","#4CAF50");
+			}
+			if(v != 0){
+				$("#mealHot").css("color","red");
+			}
+			
+	
+		}
+		
+
+		
+		//기본 고추
+		function set(){
+			$("#demo").html("<b>맵기 정하기</b>")
+		}
+		//컨트롤러
+		
+		$("#start").click(function(){
+			let arr = $("#fo").serializeArray()
+			console.log( arr )
+			let form = {}
+			
+			for(let i=0; i<arr.length;i++){
+				form[arr[i].name] = arr[i].value
+			}
+			console.log( form )
+			$.ajax({
+				url : 'roulette',method:'get',
+				data:form,
+				success : function(data){
+					$(".modal").fadeIn();
+					$("#list").prepend("<div>"+data.mealName+"</div>");	
+					$("#mealTitle").html("<div>오늘은 &nbsp;<span style='color:red;'>"+data.mealName+"</span></div>")
+					mapopen(data); /*맵 열기*/
+					createImg(data)/*음식 이미지*/
+				},error(){
+					alert("메뉴가 더 이상 없습니다.새로고침 해주세요")
+				}
+			})
+		})
+			
+		
+		/*모달 창 끄기*/
+		$(function(){  
+			$(".modal").click(function(){
+				$(".modal").fadeOut();
+			});
+		});
+		
+		
+		
+		/*이미지*/
+		function createImg(data){
+			let imgInfo = data.imgName;
+			$.ajax({
+			url:'download', type:'get',
+			success:function(){
+				$("#resultName").html("<b><img alt='a' src='download?imgName="+data.mealImg+"' class='img'></b>");
+			},error(){
+				alert("이미지 오류");
+			}
+			});
+		}
+		
+		
+		function radioReset(){ //radio reset
+			$("#demo").html("<b>맵기 정하기</b>");
+			$("#mealPeople").css("color","#4CAF50");
+			$("#mealHot").css("color","#4CAF50");
+			$("#mealWeight").css("color","#4CAF50");
+		}
+		
+		function peopleCheck(){ //mealPeople 체크시 색 변경
+			if($("#mealPeople").val() != null){
+				$("#mealPeople").css("color","red");
+			}
+		}
+		function weightCheck(){ //mealWeight 체크시 색 변경
+			if($("#mealWeight").val() != null){
+				$("#mealWeight").css("color","red");
+			}
+		}
+		window.onload = function () {
+			 $.ajax({
+				 url:'reload',type:'get',success:function(data){
+					 
+				 },error:function(){
+					 alert("새로고침 실패")
+				 }
+			 });
+			};
+		
+		
+		
+	
+	
+		
+	
+		
+	</script>
+
+</body></html>
